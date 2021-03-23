@@ -21,6 +21,36 @@ def board_of_MEMORICE(cards):#creating the board
         cards.pop(f)
     return(board,censored,coordinates)
 
+def choose_and_check(player):
+    x=0
+    y=0
+    while x != 1:
+        coor_1=input("choose the first coordinate (ej.'(0,0) o (0,1)')")
+        if len(coor_1)==5:
+            c1=int(coor_1[3])
+            x=1
+        else:
+            print("incorrectly entered coordinate")
+            continue
+    while y != 1:
+        coor_2=input("choose the second coordinate (ej.'(0,1)')")
+        if len(coor_1)==5:
+            c2=int(coor_2[3])
+            y=1
+        else:
+            print("incorrectly entered coordinate")
+            continue
+    
+    return(c1,c2)
+
+
+"""def interface (n,cards,board,censored,coordinates):#creating the interface to de MEMORICE
+    player_1 = 0
+    player_2 = 0
+    while player_1 != 2 or player_2 != 2:
+"""
+
+
 
        
         
@@ -31,3 +61,5 @@ cards = deck_of_cards(n)
 board,censored,coordinates = (board_of_MEMORICE(cards))
 print(censored)
 print(coordinates)
+player=0
+print(choose_and_check(player))
