@@ -25,9 +25,20 @@ def choose_and_check(board,censored,coordinates,counter,player,bonus):
     x=0
     while x != 1:
         coor_1=input("choose a coordinate (ej.'(0,0) o (0,1)')>>")
-        if len(coor_1)==5:
+        if len(coor_1)==5 and coor_1[4]==")" and coor_1[0]=="(" and coor_1[2]==",":
             c1=int(coor_1[3])
-            x=1
+            if c1<len(board):
+                x=1
+            else:
+                print("incorrectly entered coordinate")
+                continue
+        elif len(coor_1)==6 and coor_1[5]==")" and coor_1[0]=="(" and coor_1[2]==",":
+            c1=(10*(int(coor_1[3])))+(int(coor_1[4]))
+            if c1<len(board):
+                x=1
+            else:
+                print("incorrectly entered coordinate")
+                continue
         else:
             print("incorrectly entered coordinate")
             continue
@@ -38,9 +49,20 @@ def choose_and_check(board,censored,coordinates,counter,player,bonus):
     y = 0
     while y != 1:
         coor_2=input("choose a coordinate (ej.'(0,0) o (0,1)>>')")
-        if len(coor_2)==5:
+        if len(coor_2)==5 and coor_2[4]==")" and coor_2[0]=="(" and coor_2[2]==",":
             c2=int(coor_2[3])
-            y=1
+            if c2<len(board) and c1!=c2:
+                y=1
+            else:
+                print("incorrectly entered coordinate")
+                continue
+        elif len(coor_2)==6 and coor_2[5]==")" and coor_2[0]=="(" and coor_2[2]==",":
+            c2=(10*(int(coor_2[3])))+(int(coor_2[4]))
+            if c2<len(board) and c1!=c2:
+                y=1
+            else:
+                print("incorrectly entered coordinate")
+                continue
         else:
             print("incorrectly entered coordinate")
             continue
