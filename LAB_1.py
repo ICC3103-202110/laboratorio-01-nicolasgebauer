@@ -21,34 +21,79 @@ def board_of_MEMORICE(cards):#creating the board
         cards.pop(f)
     return(board,censored,coordinates)
 
-def choose_and_check(player):
+def choose_and_check(board,censored,coordinates,counter,player,bonus):
     x=0
-    y=0
     while x != 1:
-        coor_1=input("choose the first coordinate (ej.'(0,0) o (0,1)')")
+        coor_1=input("choose a coordinate (ej.'(0,0) o (0,1)')")
         if len(coor_1)==5:
             c1=int(coor_1[3])
             x=1
         else:
             print("incorrectly entered coordinate")
             continue
+    p1=board[c1]
+    censored[c1] = p1
+    print(censored)
+    print(coordinates)
+    y = 0
     while y != 1:
-        coor_2=input("choose the second coordinate (ej.'(0,1)')")
-        if len(coor_1)==5:
+        coor_2=input("choose a coordinate (ej.'(0,0) o (0,1)')")
+        if len(coor_2)==5:
             c2=int(coor_2[3])
             y=1
         else:
             print("incorrectly entered coordinate")
             continue
+    p2=board[c2]
+    censored[c2] = p2
+    print(censored)
+    print(coordinates)
+    if p1 == p2:
+        counter += 1
+        player +=1
+        bonus=1
+        return(censored,counter,player,bonus)
+    else:
+        censored[c1] = "|¿?|" 
+        censored[c2] = "|¿?|"
+        bonus=0
+        return(censored,counter,player,bonus)
     
-    return(c1,c2)
-
-
-"""def interface (n,cards,board,censored,coordinates):#creating the interface to de MEMORICE
-    player_1 = 0
-    player_2 = 0
-    while player_1 != 2 or player_2 != 2:
-"""
+def interface (n):
+    bonus=1
+    player_1=0
+    player_2=0
+    counter=0
+    cards = deck_of_cards(n)
+    board,censored,coordinates = (board_of_MEMORICE(cards))
+    print(censored)
+    print(coordinates)
+    while counter != n:
+        bonus=1
+        while bonus != 0 and counter!=n:
+            print("player_1 turn")
+            (censored,counter,player_1,bonus) = choose_and_check(board,censored,coordinates,counter,player_1,bonus)
+            if counter == n:
+                bonus = 0
+        
+        print(censored)
+        print(coordinates)
+        bonus=1
+        while bonus != 0 and counter!=n:
+            print("player_2 turn")
+            (censored,counter,player_2,bonus) = choose_and_check(board,censored,coordinates,counter,player_2,bonus)
+            if counter == n:
+                bonus = 0        
+        print(censored)
+        print(coordinates)
+    
+    if player_1>player_2:
+        print("congratulations player_1 you won")
+    elif player_1<player_2:
+        print("congratulations player_2 you won")
+    else:
+        print("this game ended in a draw") 
+    return(0)    
 
 
 
@@ -57,9 +102,13 @@ def choose_and_check(player):
 
     
 n = int(input("How many pairs do you want to play?"))
-cards = deck_of_cards(n)
+bonus=1
+interface (n)
+"""cards = deck_of_cards(n)
 board,censored,coordinates = (board_of_MEMORICE(cards))
 print(censored)
 print(coordinates)
+bonus="no"
 player=0
-print(choose_and_check(player))
+counter=0
+#print(choose_and_check (board,censored,counter,player,bonus))"""
