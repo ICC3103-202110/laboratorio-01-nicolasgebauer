@@ -24,7 +24,7 @@ def board_of_MEMORICE(cards):#creating the board
 def choose_and_check(board,censored,coordinates,counter,player,bonus):
     x=0
     while x != 1:
-        coor_1=input("choose a coordinate (ej.'(0,0) o (0,1)')")
+        coor_1=input("choose a coordinate (ej.'(0,0) o (0,1)')>>")
         if len(coor_1)==5:
             c1=int(coor_1[3])
             x=1
@@ -37,7 +37,7 @@ def choose_and_check(board,censored,coordinates,counter,player,bonus):
     print(coordinates)
     y = 0
     while y != 1:
-        coor_2=input("choose a coordinate (ej.'(0,0) o (0,1)')")
+        coor_2=input("choose a coordinate (ej.'(0,0) o (0,1)>>')")
         if len(coor_2)==5:
             c2=int(coor_2[3])
             y=1
@@ -57,7 +57,7 @@ def choose_and_check(board,censored,coordinates,counter,player,bonus):
         censored[c1] = "|¿?|" 
         censored[c2] = "|¿?|"
         bonus=0
-        return(censored,counter,player,bonus)
+        return(censored,counter,player,bonus)        
     
 def interface (n):
     bonus=1
@@ -97,18 +97,6 @@ def interface (n):
 
 
 
-       
-        
-
-    
-n = int(input("How many pairs do you want to play?"))
+n=int(input("How many pairs do you want to play?>>"))
 bonus=1
 interface (n)
-"""cards = deck_of_cards(n)
-board,censored,coordinates = (board_of_MEMORICE(cards))
-print(censored)
-print(coordinates)
-bonus="no"
-player=0
-counter=0
-#print(choose_and_check (board,censored,counter,player,bonus))"""
