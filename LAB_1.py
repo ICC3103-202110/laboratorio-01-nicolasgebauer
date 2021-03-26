@@ -7,24 +7,24 @@ def deck_of_cards(n):#creating the the deck of cards
         cards.append(i+1)
         cards.append(i+1)
     return(cards)#return the deck of cards
-def size_board(cards):
-    if int(len(cards)) % 10 == 0:
+def size_board(cards):# define the shape of the board
+    if int(len(cards)) % 10 == 0:#%10
         mul=10
         (table,coordinates_1)=board_of_MEMORICE(cards,mul)
-    elif int(len(cards)) % 8 == 0:
+    elif int(len(cards)) % 8 == 0:#%8
         mul=8
         (table,coordinates_1)=board_of_MEMORICE(cards,mul)
-    elif int(len(cards)) % 6 == 0:
+    elif int(len(cards)) % 6 == 0:#%6
         mul=6
         (table,coordinates_1)=board_of_MEMORICE(cards,mul)
-    elif int(len(cards)) % 4 == 0:
+    elif int(len(cards)) % 4 == 0:#%4
         mul=4
         (table,coordinates_1)=board_of_MEMORICE(cards,mul)
-    elif int(len(cards)) % 2 == 0:
+    elif int(len(cards)) % 2 == 0:#%2
         mul=2
         (table,coordinates_1)=board_of_MEMORICE(cards,mul)
     board=[]
-    for i in range (len(cards)):
+    for i in range (len(cards)):# creatin the board that contain the cards 
         x=len(cards)
         f=random.randint(0,x-1)
         c=cards[f]
@@ -33,7 +33,7 @@ def size_board(cards):
     return(coordinates_1,table,board)
     
 
-def board_of_MEMORICE(cards,mul):#creating the board
+def board_of_MEMORICE(cards,mul):#creating the board that is censored
     coordinates_1=[" "]
     coordinates_2=[]
     censored=[]
@@ -52,14 +52,14 @@ def board_of_MEMORICE(cards,mul):#creating the board
     
     return(table,coordinates_1)
 
-def choose_and_check(board,table,coordinates_1,counter,player,bonus):
+def choose_and_check(board,table,coordinates_1,counter,player,bonus):# cheacking the coordinates and checking in the board an censored board
     x=0
     while x != 1:
         coor_1=input("choose a coordinate (ej.0,0 o 1,1)>>")
         if len(coor_1)==3 and coor_1[1]=="," :
             c1_1=int(coor_1[0])
             c1_2=int(coor_1[2])
-            if c1_1+c1_2<len(board):
+            if c1_1+c1_2<len(board) and (c1_2+1)<len(coordinates_1):
                 x=1
             else:
                 print("incorrectly entered coordinate")
@@ -67,7 +67,7 @@ def choose_and_check(board,table,coordinates_1,counter,player,bonus):
         elif len(coor_1)==4 and coor_1[1]==",":
             c1_1=int(coor_1[0])
             c1_2=(10*(int(coor_1[2])))+(int(coor_1[3]))
-            if c1_1+c1_2<len(board):
+            if c1_1+c1_2<len(board) and (c1_2+1)<len(coordinates_1):
                 x=1
             else:
                 print("incorrectly entered coordinate")
@@ -75,7 +75,7 @@ def choose_and_check(board,table,coordinates_1,counter,player,bonus):
         elif len(coor_1)==4 and coor_1[2]==",":
             c1_1=(10*(int(coor_1[0])))+(int(coor_1[1]))
             c1_2=int(coor_1[3])
-            if c1_1+c1_2<len(board):
+            if c1_1+c1_2<len(board) and (c1_2+1)<len(coordinates_1):
                 x=1
             else:
                 print("incorrectly entered coordinate")
@@ -93,7 +93,7 @@ def choose_and_check(board,table,coordinates_1,counter,player,bonus):
         if len(coor_2)==3 and coor_2[1]=="," :
             c2_1=int(coor_2[0])
             c2_2=int(coor_2[2])
-            if c2_1+c2_2<len(board):
+            if c2_1+c2_2<len(board) and (c2_2+1)<len(coordinates_1):
                 y=1
             else:
                 print("incorrectly entered coordinate")
@@ -101,7 +101,7 @@ def choose_and_check(board,table,coordinates_1,counter,player,bonus):
         elif len(coor_2)==4 and coor_2[1]==",":
             c2_1=int(coor_2[0])
             c2_2=(10*(int(coor_2[2])))+(int(coor_2[3]))
-            if c2_1+c2_2<len(board):
+            if c2_1+c2_2<len(board) and (c2_2+1)<len(coordinates_1):
                 y=1
             else:
                 print("incorrectly entered coordinate")
@@ -109,7 +109,7 @@ def choose_and_check(board,table,coordinates_1,counter,player,bonus):
         elif len(coor_2)==4 and coor_2[2]==",":
             c2_1=(10*(int(coor_2[0])))+(int(coor_2[1]))
             c2_2=int(coor_2[3])
-            if c2_1+c2_2<len(board):
+            if c2_1+c2_2<len(board) and (c2_2+1)<len(coordinates_1):
                 y=1
             else:
                 print("incorrectly entered coordinate")
@@ -133,7 +133,7 @@ def choose_and_check(board,table,coordinates_1,counter,player,bonus):
         print("\n")
         return(table,counter,player,bonus,coordinates_1)
 
-def interface (n):
+def interface (n): #the interface of the game MEMORICE
     bonus=1
     player_1=0
     player_2=0
